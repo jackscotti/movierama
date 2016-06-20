@@ -1,0 +1,10 @@
+!!!
+%html
+  %head
+    %title= "Movierama - Someone has left a vote on your review"
+
+  %body
+    %h1
+      Hi #{ @recipient.name },
+    %p
+      #{ @voter.name } #{ @action }s your review of #{ @movie.title }.
