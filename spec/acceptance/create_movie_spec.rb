@@ -8,22 +8,33 @@ RSpec.describe 'submit movie', type: :feature do
   let(:page) { Pages::MovieNew.new }
 
   context 'when logged out' do
-    it 'fails'
+    it 'is not possible to create a movie' do
+      expect(page).not_to have_field(:title)
+      expect(page).not_to have_field(:description)
+      expect(page).not_to have_field(:date)
+    end
   end
 
   context 'when logged in' do
     with_logged_in_user
     before { page.open }
+    title = 'Bridge over river Kwai'
 
     it 'succeeds' do
       page.submit(
-        title:       'Bridge over river Kwai',
+        title:       title,
         description: 'Boom!',
         date:        '1957-10-02')
       expect(page).to have_movie_creation_message
     end
 
-    it 'makes the movie visible on the home page'
+    it 'makes the movie visible on the home page' do
+      page.submit(
+        title:       title,
+        description: 'Boom!',
+        date:        '1957-10-02')
+      expect(page.body).to include(title)
+    end
 
     it 'fails without a date' do
       page.submit(
@@ -35,5 +46,3 @@ RSpec.describe 'submit movie', type: :feature do
   end
 
 end
-
-
