@@ -66,6 +66,13 @@ If not, you'll need to get your own OAuth tokens from Github and edit
 `.env` appropriately.
 
 
+#### Sending emails
+
+The application notifies users with emails when they receive reviews.
+To start sidekiq:
+
+    $ bundle exec sidekiq
+
 
 ### Screenshot
 

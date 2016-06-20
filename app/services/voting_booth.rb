@@ -34,6 +34,6 @@ class VotingBooth
   end
 
   def _notify(action)
-    VoteCastMailer.action_email(@user.id, @movie.id, action.to_s).deliver
+    VoteCastMailer.delay.action_email(@user.id, @movie.id, action.to_s)
   end
 end

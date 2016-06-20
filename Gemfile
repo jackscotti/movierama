@@ -10,7 +10,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 # Use unicorn as the app server
 gem 'unicorn'
 
-# Productio nmonitoring
+# Production monitoring
 gem 'newrelic_rpm'
 # Fixes Rails architecture kludges
 gem 'rails_12factor', group: :production
@@ -26,7 +26,7 @@ gem 'ohm-contrib'
 gem 'draper'
 
 # Use Redis as cache
-gem 'redis-rails'
+gem 'redis-rails', '~> 4.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
@@ -58,6 +58,8 @@ gem 'pry'
 gem 'pry-nav'
 gem 'pry-doc'
 
+# Background processing for Ruby, for sending emails asynchrounously.
+gem 'sidekiq', '~> 4.1', '>= 4.1.2'
 
 group :test do
   gem 'guard-rspec'    # Continuous testing
